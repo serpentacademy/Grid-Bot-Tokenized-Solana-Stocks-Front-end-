@@ -1,0 +1,89 @@
+/* Minimalist dark design for About section */
+.about-section {
+  background: #1a1a1a; /* Dark background */
+  color: #ffffff; /* White text */
+  padding: 60px 20px;
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.about-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.about-logo {
+  width: 200px; /* Adjustable size */
+  height: auto;
+  margin-bottom: 30px;
+  border-radius: 12px; /* Soft corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+}
+
+.about-title {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #4f46e5; /* Blue accent for title */
+}
+
+.about-description {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 40px;
+  color: #dddddd; /* Light gray for readability */
+}
+
+.about-principles {
+  text-align: left;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.about-principles h3 {
+  font-size: 1.4rem;
+  font-weight: 500;
+  margin-bottom: 15px;
+  color: #ffffff;
+}
+
+.about-principles ul {
+  list-style: none;
+  padding: 0;
+}
+
+.about-principles li {
+  font-size: 1rem;
+  margin-bottom: 10px;
+  padding-left: 20px;
+  position: relative;
+}
+
+.about-principles li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: #4f46e5; /* Blue bullet points */
+}
+
+/* Light mode adjustments (if your app supports it) */
+.light .about-section {
+  background: #f0f0f0;
+  color: #333333;
+}
+
+.light .about-title {
+  color: #4f46e5;
+}
+
+.light .about-description {
+  color: #555555;
+}
+
+.light .about-principles h3 {
+  color: #333333;
+}
+
+.light .about-principles li::before {
+  color: #4f46e5;
+}

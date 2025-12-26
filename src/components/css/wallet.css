@@ -1,0 +1,212 @@
+/* wallet.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --bg-gradient: linear-gradient(135deg, #13141b 0%, #1e1f26 100%);
+  --card-bg: rgba(30, 31, 40, 0.7);
+  --card-border: rgba(255, 255, 255, 0.08);
+  --accent-color: #6366f1; /* Indigo */
+  --accent-glow: rgba(99, 102, 241, 0.2);
+  --text-primary: #ffffff;
+  --text-secondary: #94a3b8;
+  --success: #10b981;
+}
+
+/* Reset & Container */
+.wallet-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #0f0f13; /* Page background */
+  font-family: 'Inter', sans-serif;
+  color: var(--text-primary);
+  padding: 20px;
+}
+
+/* Main Card */
+.wallet-card {
+  width: 100%;
+  max-width: 480px;
+  background: var(--bg-gradient);
+  border: 1px solid var(--card-border);
+  border-radius: 24px;
+  padding: 32px;
+  box-shadow: 
+    0 20px 40px -10px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Header */
+.wallet-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 32px;
+  gap: 16px;
+}
+
+.icon-container {
+  width: 48px;
+  height: 48px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--card-border);
+}
+
+.wallet-icon {
+  width: 24px;
+  height: 24px;
+  filter: drop-shadow(0 0 8px rgba(255,255,255,0.3));
+}
+
+.header-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.wallet-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.wallet-subtitle {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  font-weight: 400;
+}
+
+/* Hero Section (Balances) */
+.wallet-hero {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 20px;
+  padding: 24px;
+  margin-bottom: 32px;
+  border: 1px solid var(--card-border);
+}
+
+.label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-secondary);
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.amount {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: -0.03em;
+  background: linear-gradient(to right, #fff, #cbd5e1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.currency {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  -webkit-text-fill-color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.hero-divider {
+  height: 1px;
+  background: var(--card-border);
+  margin: 20px 0;
+}
+
+.amount-sub {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin: 0;
+  color: var(--text-primary);
+}
+
+/* Holdings Section */
+.section-header h3 {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  margin-bottom: 16px;
+  font-weight: 500;
+}
+
+.holdings-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.holding-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 16px;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+.holding-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--accent-color);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.holding-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.stock-avatar {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, #2d2f36, #1f2026);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: var(--accent-color);
+  font-size: 1.1rem;
+  border: 1px solid var(--card-border);
+}
+
+.stock-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.stock-name {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.stock-qty {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-top: 2px;
+}
+
+.holding-right {
+  text-align: right;
+}
+
+.stock-value {
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--text-primary);
+}
