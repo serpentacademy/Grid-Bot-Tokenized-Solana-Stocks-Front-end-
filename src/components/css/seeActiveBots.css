@@ -233,3 +233,61 @@
   color: #fff;
   border-color: var(--danger-red);
 }
+
+
+
+
+
+/* Status Badges */
+.badge-active {
+    background: rgba(0, 255, 136, 0.15);
+    color: #00ff88;
+}
+
+.badge-inactive {
+    background: rgba(255, 68, 68, 0.15);
+    color: #ff4444;
+    border: 1px solid rgba(255, 68, 68, 0.3);
+}
+
+/* Dim the whole card if inactive */
+.card-inactive {
+    opacity: 0.75;
+    border: 1px solid #442222; /* Slight red tint border */
+}
+
+.pulse .dot {
+    animation: pulse-animation 2s infinite;
+}
+
+@keyframes pulse-animation {
+    0% { opacity: 1; }
+    50% { opacity: 0.4; }
+    100% { opacity: 1; }
+}/* Status Badges */
+.badge-active {
+    background: rgba(0, 255, 136, 0.15);
+    color: #00ff88;
+}
+
+.badge-inactive {
+    background: rgba(255, 68, 68, 0.15);
+    color: #ff4444;
+    border: 1px solid rgba(255, 68, 68, 0.3);
+}
+
+/* Dim the whole card if inactive */
+.card-inactive {
+    opacity: 0.75;
+    border: 1px solid #442222; /* Slight red tint border */
+}
+
+.pulse .dot {
+    animation: pulse-animation 2s infinite;
+}
+
+@keyframes pulse-animation {
+    0% { opacity: 1; }
+    50% { opacity: 0.4; }
+    100% { opacity: 1; }
+}
