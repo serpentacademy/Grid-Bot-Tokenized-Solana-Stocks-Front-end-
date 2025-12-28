@@ -140,13 +140,13 @@ const SeeActiveBots: React.FC = () => {
   };
 
   const getProfit = (initial: number, current: number): ProfitMetrics => {
-    const diff = 0;
+    const diff = current - initial;
     // Prevent division by zero
     const percent = initial > 0 ? ((diff / initial) * 100).toFixed(2) : '0.00';
     return {
-      value: 0,
+      value: diff,
       percent,
-      isPositive: true
+      isPositive: diff >= 0
     };
   };
 
