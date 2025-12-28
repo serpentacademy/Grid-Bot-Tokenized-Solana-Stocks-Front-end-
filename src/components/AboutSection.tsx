@@ -54,7 +54,7 @@ const AboutSection = () => {
             <img src={logo} alt="xStocks Logo" className="about-logo" />
           </div>
           <h2 className="about-title">
-            About <span className="highlight">xStocks</span> Grid Bot
+            About <span className="highlight">Tokenized Stocks</span> Grid Bot
           </h2>
           <p className="about-description">
             A self-custodial DeFi grid bot living on your machine. 

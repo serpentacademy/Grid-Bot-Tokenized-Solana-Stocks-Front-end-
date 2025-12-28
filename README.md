@@ -7,4 +7,4 @@
 <h1>Server</h1>
 <p>Link to Repo soon</p>
 
-<h1>Open Source</h1>
+<h1>Open Source Project</h1>
