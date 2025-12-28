@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import "../components/css/addGridBot.css"; // Updated CSS for Apple-inspired dark mode aesthetics
+import { FaRobot, FaChartLine, FaDollarSign, FaLayerGroup, FaLock, FaExclamationTriangle } from 'react-icons/fa';
+import "../components/css/addGridBot.css";
 
 const AddGridBot: React.FC = () => {
   const [stock, setStock] = useState('NVDA');
@@ -20,89 +21,136 @@ const AddGridBot: React.FC = () => {
       numGrids: parseInt(numGrids, 10),
     });
     alert('Grid Bot added! Check console for details.');
-    setMinPrice('');
-    setMaxPrice('');
-    setUsdcAmount('');
-    setNumGrids('');
-    // Optionally navigate back: use useNavigate() from react-router-dom if desired
   };
 
   return (
-    <div className="form-container">
-      <h2 className="form-title">Add a Grid Bot</h2>
-      <form onSubmit={handleSubmit} className="form">
-        <div className="form-group">
-          <label htmlFor="stock" className="form-label">Select Stock</label>
-          <select
-            id="stock"
-            value={stock}
-            onChange={(e) => setStock(e.target.value)}
-            className="form-select"
-          >
-            {stocks.map((s) => (
-              <option key={s} value={s}>{s}</option>
-            ))}
-          </select>
+    <div className="grid-bot-wrapper">
+      <div className="glass-panel">
+        
+        {/* Header */}
+        <div className="panel-header">
+          <div className="header-icon-glow">
+            <FaRobot />
+          </div>
+          <div>
+            <h2 className="panel-title">Initialize Grid Protocol</h2>
+            <p className="panel-subtitle">Configure automated trading parameters</p>
+          </div>
         </div>
-        <div className="form-group">
-          <label htmlFor="minPrice" className="form-label">Min Stock Price</label>
-          <input
-            id="minPrice"
-            type="number"
-            value={minPrice}
-            onChange={(e) => setMinPrice(e.target.value)}
-            className="form-input"
-            placeholder="e.g., 100"
-            required
-            min="0"
-            step="0.01"
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="maxPrice" className="form-label">Max Stock Price</label>
-          <input
-            id="maxPrice"
-            type="number"
-            value={maxPrice}
-            onChange={(e) => setMaxPrice(e.target.value)}
-            className="form-input"
-            placeholder="e.g., 200"
-            required
-            min="0"
-            step="0.01"
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="usdcAmount" className="form-label">Amount of USDC</label>
-          <input
-            id="usdcAmount"
-            type="number"
-            value={usdcAmount}
-            onChange={(e) => setUsdcAmount(e.target.value)}
-            className="form-input"
-            placeholder="e.g., 1000"
-            required
-            min="0"
-            step="0.01"
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="numGrids" className="form-label">Number of Grids</label>
-          <input
-            id="numGrids"
-            type="number"
-            value={numGrids}
-            onChange={(e) => setNumGrids(e.target.value)}
-            className="form-input"
-            placeholder="e.g., 10"
-            required
-            min="1"
-            step="1"
-          />
-        </div>
-        <button disabled={true} type="submit" className="form-button">Add a Grid Bot</button>
-        <span className="form-label">coming soon...</span>
-      </form>
+
+        <form onSubmit={handleSubmit} className="cyber-form">
+          
+          {/* Stock Selection */}
+          <div className="form-group">
+            <label htmlFor="stock" className="cyber-label">Target Asset</label>
+            <div className="input-wrapper">
+              <FaChartLine className="input-icon" />
+              <select
+                id="stock"
+                value={stock}
+                onChange={(e) => setStock(e.target.value)}
+                className="cyber-select"
+              >
+                {stocks.map((s) => (
+                  <option key={s} value={s}>{s}</option>
+                ))}
+              </select>
+              <div className="select-arrow"></div>
+            </div>
+          </div>
+
+          {/* Price Range Group */}
+          <div className="form-row">
+            <div className="form-group half">
+              <label htmlFor="minPrice" className="cyber-label">Min Price</label>
+              <div className="input-wrapper">
+                <span className="currency-prefix">$</span>
+                <input
+                  id="minPrice"
+                  type="number"
+                  value={minPrice}
+                  onChange={(e) => setMinPrice(e.target.value)}
+                  className="cyber-input"
+                  placeholder="0.00"
+                  required
+                  min="0"
+                  step="0.01"
+                />
+              </div>
+            </div>
+
+            <div className="form-group half">
+              <label htmlFor="maxPrice" className="cyber-label">Max Price</label>
+              <div className="input-wrapper">
+                <span className="currency-prefix">$</span>
+                <input
+                  id="maxPrice"
+                  type="number"
+                  value={maxPrice}
+                  onChange={(e) => setMaxPrice(e.target.value)}
+                  className="cyber-input"
+                  placeholder="0.00"
+                  required
+                  min="0"
+                  step="0.01"
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* USDC Amount */}
+          <div className="form-group">
+            <label htmlFor="usdcAmount" className="cyber-label">Liquidity Deployment (USDC)</label>
+            <div className="input-wrapper">
+              <FaDollarSign className="input-icon" />
+              <input
+                id="usdcAmount"
+                type="number"
+                value={usdcAmount}
+                onChange={(e) => setUsdcAmount(e.target.value)}
+                className="cyber-input"
+                placeholder="1000.00"
+                required
+                min="0"
+                step="0.01"
+              />
+            </div>
+          </div>
+
+          {/* Grid Count */}
+          <div className="form-group">
+            <label htmlFor="numGrids" className="cyber-label">Grid Levels</label>
+            <div className="input-wrapper">
+              <FaLayerGroup className="input-icon" />
+              <input
+                id="numGrids"
+                type="number"
+                value={numGrids}
+                onChange={(e) => setNumGrids(e.target.value)}
+                className="cyber-input"
+                placeholder="10"
+                required
+                min="1"
+                step="1"
+              />
+            </div>
+          </div>
+
+          {/* Disabled Button Area */}
+          <div className="action-area">
+            <button disabled={true} type="submit" className="cyber-button disabled">
+              <FaLock className="btn-icon" />
+              <span>EXECUTE STRATEGY</span>
+            </button>
+            
+            <div className="status-message warning">
+              <FaExclamationTriangle />
+              <span>SYSTEM UPGRADE IN PROGRESS...</span>
+            </div>
+          </div>
+
+        </form>
+      </div>
     </div>
   );
 };

@@ -1,71 +1,84 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom'; // Import Link for navigation
-import { FaPlus, FaRobot, FaHistory, FaWallet, FaBars, FaAdjust, FaBookOpen } from 'react-icons/fa';  // Icons from react-icons
+import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { FaPlus, FaRobot, FaHistory, FaWallet, FaBars, FaTimes, FaAdjust, FaBookOpen, FaSun, FaMoon } from 'react-icons/fa';
+import './components/css/menu.css';
 
-interface MenuProps {
-  // Removed onAddBotClick since we're using routing now
-}
-
-const Menu: React.FC<MenuProps> = () => {
+const Menu: React.FC = () => {
   const [isResponsive, setIsResponsive] = useState(false);
+  const [darkMode, setDarkMode] = useState(true);
+  const location = useLocation();
 
-  const toggleResponsive = () => {
-    setIsResponsive(!isResponsive);
-  };
-
-  const closeMenu = () => {
-    setIsResponsive(false);
-  };
-    const [darkMode, setDarkMode] = useState(true);  // Default to dark mode
-  
-    const toggleTheme = () => {
-      setDarkMode(!darkMode);
-    };
-  
+  const toggleResponsive = () => setIsResponsive(!isResponsive);
+  const closeMenu = () => setIsResponsive(false);
+  const toggleTheme = () => setDarkMode(!darkMode);
 
   return (
-    <nav className={`topnav ${isResponsive ? 'responsive' : ''}`}>
-      <Link to="/addGridBot" className="nav-link" onClick={closeMenu}>
-        <FaPlus className="menu-icon" />
-        Add a Grid Bot
-      </Link>
-      <Link to="/activeBots" className="nav-link" onClick={closeMenu}>
-        <FaRobot className="menu-icon" />
-        See Active Bots
-      </Link>
-      <Link to="/closedBots" className="nav-link" onClick={closeMenu}>
-        <FaHistory className="menu-icon" />
-        See Closed Bots' History
-      </Link>
-      <Link to="/Wallet" className="nav-link" onClick={closeMenu}>
-        <FaWallet className="menu-icon" />
-        Wallet   
-      </Link>
+    <nav className={`sci-nav ${isResponsive ? 'expanded' : ''}`}>
+      <div className="nav-blur-backdrop"></div>
+      
+      {/* 1. Brand & Terminal Status */}
+      <div className="nav-brand-group">
+        <div className="nav-brand">
+          <div className="brand-logo">
+            <FaRobot className="logo-icon" />
+          </div>
+          <span className="brand-text">Tokenized Stocks<span className="brand-version">OS</span></span>
+        </div>
+        
+        {/* The "Terminal" Status Indicator requested */}
+        <div className="system-status">
+          <span className="status-dot"></span>
+          <span className="status-text">SYSTEM READY</span>
+        </div>
+      </div>
 
-      <Link to="/settings" className="nav-link" onClick={closeMenu}>
-        <FaAdjust className="menu-icon" />
-        Settings
-      </Link>
-        <Link to="/about" className="nav-link" onClick={closeMenu}>
-        <FaBookOpen className="menu-icon" />
-        About   
-      </Link>
-      <button className="icon" onClick={toggleResponsive}>
-        <FaBars />
-      </button>
-                <button onClick={toggleTheme} className="theme-toggle" aria-label={darkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}>
-            {darkMode ? (
-              // Sun icon for switching to light mode
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
-                <path d="M12 3a9 9 0 100 18 9 9 0 000-18zm0 16a7 7 0 110-14 7 7 0 010 14zM12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
-              </svg>
-            ) : (
-              // Moon icon for switching to dark mode
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
-                <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
-              </svg>
-            )}
-          </button>
+      {/* 2. Navigation Center (Glass Pill) */}
+      <div className="nav-links-wrapper">
+        <Link to="/addGridBot" className={`nav-link ${location.pathname === '/addGridBot' ? 'active' : ''}`} onClick={closeMenu}>
+          <span className="icon-box"><FaPlus /></span>
+          <span className="link-text">New Grid</span>
+        </Link>
+
+        <Link to="/activeBots" className={`nav-link ${location.pathname === '/activeBots' ? 'active' : ''}`} onClick={closeMenu}>
+          <span className="icon-box"><FaRobot /></span>
+          <span className="link-text">Active</span>
+        </Link>
+
+        <Link to="/closedBots" className={`nav-link ${location.pathname === '/closedBots' ? 'active' : ''}`} onClick={closeMenu}>
+          <span className="icon-box"><FaHistory /></span>
+          <span className="link-text">History</span>
+        </Link>
+
+        <Link to="/Wallet" className={`nav-link ${location.pathname === '/Wallet' ? 'active' : ''}`} onClick={closeMenu}>
+          <span className="icon-box"><FaWallet /></span>
+          <span className="link-text">Wallet</span>
+        </Link>
+        
+        <Link to="/settings" className={`nav-link ${location.pathname === '/settings' ? 'active' : ''}`} onClick={closeMenu}>
+            <span className="icon-box"><FaAdjust /></span>
+            <span className="link-text">Settings</span>
+        </Link>
+
+        <Link to="/about" className={`nav-link ${location.pathname === '/about' ? 'active' : ''}`} onClick={closeMenu}>
+          <span className="icon-box"><FaBookOpen /></span>
+          <span className="link-text">About</span>
+        </Link>
+      </div>
+
+      {/* 3. Right Controls (Theme + Mobile) */}
+      <div className="nav-controls">
+        <button 
+          className="theme-toggle-btn" 
+          onClick={toggleTheme}
+          aria-label="Toggle Theme"
+        >
+           {darkMode ? <FaSun className="theme-icon" /> : <FaMoon className="theme-icon" />}
+        </button>
+        
+        <button className="mobile-toggle" onClick={toggleResponsive}>
+          {isResponsive ? <FaTimes /> : <FaBars />}
+        </button>
+      </div>
     </nav>
   );
 };
