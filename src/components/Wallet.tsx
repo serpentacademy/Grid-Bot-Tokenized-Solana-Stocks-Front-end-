@@ -33,7 +33,7 @@ const Wallet = () => {
 
   // 2. WebSocket Connection Hook
   useEffect(() => {
-    const ws = new WebSocket('ws://localhost:8080');
+    const ws = new WebSocket('ws://localhost:8083');
 
     ws.onopen = () => {
       console.log('✅ Connected to Price Server');

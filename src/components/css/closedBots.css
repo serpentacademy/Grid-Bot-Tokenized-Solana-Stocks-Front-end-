@@ -1,110 +1,172 @@
+/* Variables for easy theming */
+:root {
+  --bg-surface: #09090b;       /* Very dark, almost black */
+  --bg-card: #18181b;          /* Zinc-900 */
+  --bg-card-hover: #27272a;    /* Zinc-800 */
+  --border-color: #3f3f46;     /* Zinc-700 */
+  
+  --text-primary: #f4f4f5;     /* Zinc-100 */
+  --text-secondary: #a1a1aa;   /* Zinc-400 */
+  
+  --accent-color: #6366f1;     /* Indigo-500 */
+  --success-color: #10b981;    /* Emerald-500 */
+  --success-bg: rgba(16, 185, 129, 0.1);
+  --error-color: #ef4444;      /* Red-500 */
+  --error-bg: rgba(239, 68, 68, 0.1);
+
+  --font-main: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Roboto Mono', monospace; /* Tech feel */
+}
+
 .closed-bots-container {
-  background: #1a1a1a;
-  border-radius: 12px;
-  padding: 32px;
-  max-width: 900px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 40px;
+  max-width: 800px;
   margin: 40px auto;
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
-  color: #ffffff;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: var(--font-main);
+  color: var(--text-primary);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
 }
 
-.closed-bots-title {
-  font-size: 1.8rem;
-  font-weight: 600;
-  text-align: center;
-  margin-bottom: 32px;
-  color: #4f46e5;
-}
-
-.bots-list {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
-
-.bot-card {
-  background: #242424;
-  border-radius: 10px;
-  padding: 20px;
-  border: 1px solid #333;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.bot-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 20px rgba(79, 70, 229, 0.15);
-}
-
-.bot-header {
+/* Header Section */
+.header-section {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 16px;
+  margin-bottom: 32px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.closed-bots-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.badge-count {
+  background: var(--bg-card-hover);
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  padding: 4px 12px;
+  border-radius: 99px;
+  font-weight: 500;
+}
+
+/* Bots List Layout */
+.bots-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Card Styling */
+.bot-card {
+  background: var(--bg-card);
+  border: 1px solid #27272a; /* Subtle border */
+  border-radius: 12px;
+  padding: 24px;
+  transition: all 0.2s ease-in-out;
+  position: relative;
+  overflow: hidden;
+}
+
+.bot-card:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--border-color);
+  transform: translateY(-2px);
+}
+
+/* Card Header */
+.bot-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
 }
 
 .bot-trading-pair {
-  font-size: 1.3rem;
-  font-weight: 500;
-  color: #4f46e5;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 4px 0;
 }
 
-.pnl-indicator {
-  font-size: 1.4rem;
-  font-weight: bold;
+.bot-date {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+/* PnL Badges - Minimalist Style */
+.pnl-badge {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  font-weight: 600;
   padding: 6px 12px;
-  border-radius: 6px;
+  border-radius: 8px;
+  letter-spacing: -0.03em;
 }
 
-.pnl-indicator.profit {
-  background: rgba(34, 197, 94, 0.2);
-  color: #22c55e;
+.pnl-badge.profit {
+  background: var(--success-bg);
+  color: var(--success-color);
+  border: 1px solid rgba(16, 185, 129, 0.2);
 }
 
-.pnl-indicator.loss {
-  background: rgba(239, 68, 68, 0.2);
-  color: #ef4444;
+.pnl-badge.loss {
+  background: var(--error-bg);
+  color: var(--error-color);
+  border: 1px solid rgba(239, 68, 68, 0.2);
 }
 
-.bot-details-grid {
+/* Divider */
+.card-divider {
+  height: 1px;
+  background: #27272a;
+  margin: 0 -24px 20px -24px; /* Full width divider */
+}
+
+/* Metrics Grid */
+.bot-metrics {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 12px;
+  grid-template-columns: repeat(3, 1fr); /* 3 Columns for clean look */
+  row-gap: 20px;
+  column-gap: 12px;
 }
 
-.bot-detail {
-  font-size: 0.95rem;
+.metric-item {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  gap: 6px;
 }
 
-.bot-detail span:first-child {
-  color: #bbbbbb;
+.metric-item .label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-secondary);
   font-weight: 500;
 }
 
-.profit {
-  color: #22c55e;
-  font-weight: bold;
+.metric-item .value {
+  font-size: 1rem;
+  color: var(--text-primary);
+  font-weight: 500;
 }
 
-.loss {
-  color: #ef4444;
-  font-weight: bold;
+.mono {
+  font-family: var(--font-mono);
 }
 
-/* Light mode support (optional) */
-.light .closed-bots-container {
-  background: #ffffff;
-  color: #333333;
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
-}
+.text-profit { color: var(--success-color); }
+.text-loss { color: var(--error-color); }
 
-.light .bot-card {
-  background: #f8f8f8;
-  border: 1px solid #e0e0e0;
-}
-
-.light .bot-trading-pair {
-  color: #4f46e5;
+/* Responsive Grid for mobile */
+@media (max-width: 600px) {
+  .bot-metrics {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }

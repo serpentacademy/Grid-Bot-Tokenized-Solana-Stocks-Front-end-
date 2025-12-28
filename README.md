@@ -1,6 +1,6 @@
 
 <h1>front-end app</h1>
-<p>Install NPM depedencies</p>
+<p>Install NPM depedencies: "npm install"</p>
 <p>Run on termminal: "npm run dev"</p>
 
 
