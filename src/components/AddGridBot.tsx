@@ -100,7 +100,8 @@ const AddGridBot: React.FC = () => {
             step="1"
           />
         </div>
-        <button type="submit" className="form-button">Add a Grid Bot</button>
+        <button disabled={true} type="submit" className="form-button">Add a Grid Bot</button>
+        <span className="form-label">coming soon...</span>
       </form>
     </div>
   );
